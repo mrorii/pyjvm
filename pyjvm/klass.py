@@ -266,5 +266,6 @@ if __name__ == '__main__':
     filename = sys.argv[1]
 
     with open(filename, 'rb') as f:
-        klass = JavaClass(filename)
+        from pyjvm.klass import PyJClass
+        klass = PyJClass(f)
         print klass.verbose()
