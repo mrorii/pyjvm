@@ -170,9 +170,8 @@ class PyJClass(object):
 
         for e in self.java_constants:
             if not e:
-                continue
-
-            if e[0] in (self.CONSTANT_UTF8, self.CONSTANT_INTEGER, self.CONSTANT_FLOAT,
+                pass
+            elif e[0] in (self.CONSTANT_UTF8, self.CONSTANT_INTEGER, self.CONSTANT_FLOAT,
                         self.CONSTANT_LONG, self.CONSTANT_DOUBLE):
                 e = e[1]
             elif e[0] == self.CONSTANT_CLASS:
@@ -244,14 +243,14 @@ class PyJClass(object):
     def verbose(self):
         retval = ["{} : {}({})".format(self.klass, self.this_class, self.super_class)]
 
-        for i, constant in enumerate(self.java_constans):
-            if not c:
+        for i, constant in enumerate(self.java_constants):
+            if not constant:
                 continue
             retval.append("{:4d}\t{}".format(i + 1, constant))
 
         for key, value in self.java_methods.iteritems():
             retval.append("{}".format(key))
-            retval.append("{}".format(v.verbose()))
+            retval.append("{}".format(value.verbose()))
         return '\n'.join(retval)
 
     def native_methods(self):
