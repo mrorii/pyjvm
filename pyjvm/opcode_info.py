@@ -784,7 +784,7 @@ def get_opcode_length(op):
         return 0
     elif length == 0:
         raise RuntimeError
-    else
+    else:
         return length
 
 def get_opcode_arg(op):

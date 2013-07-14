@@ -1,6 +1,7 @@
 # pyjvm
 
-Yet another Java virtual machine implementation, written in pure python. Heavily inspired by Rava.
+Yet another Java virtual machine implementation, written in pure Python.
+This repository is almost a line-by-line translation of [Rava](http://www.namikilab.tuat.ac.jp/~sasada/prog/rava.html), which is a JVM written in pure Ruby.
 
 This repository is intended mainly for study purposes. It is not meant as a production-ready JVM.
 
@@ -17,4 +18,4 @@ This repository is intended mainly for study purposes. It is not meant as a prod
 * http://www.namikilab.tuat.ac.jp/~sasada/prog/rava.html
 * http://www.namikilab.tuat.ac.jp/~sasada/prog/rava2.html
 * http://www.namikilab.tuat.ac.jp/~sasada/prog/rava_jp.html
-* https://github.com/koichiro/rava
+

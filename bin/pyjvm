@@ -2,17 +2,17 @@
 
 import sys
 
-from pyjvm.thread_manager import ThreadManager
-from pyjvm.class_manager import ClassManager
+from pyjvm.thread_manager import PyJThreadManager
+from pyjvm.class_manager import PyJClassManager
 
 def main():
-    thread_manager = ThreadManager()
-    class_manager = ClassManager()
+    thread_manager = PyJThreadManager()
+    class_manager = PyJClassManager()
 
     main_class = class_manager.load(sys.argv[1])
-    thread = thread_manager.create()
-    thread.set_main(main_class, sys.argv[2:])
-    thread.kick()
+    # thread = thread_manager.create()
+    # thread.set_main(main_class, sys.argv[2:])
+    # thread.kick()
 
 if __name__ == '__main__':
     main()
