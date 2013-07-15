@@ -26,7 +26,7 @@ class PyJClass(object):
         self.java_constants = [None]
         self.java_interfaces = []
 
-        self.klass = klass
+        self.klass = klass  # File object
         self._load()
         self.klass = None
 
@@ -102,9 +102,9 @@ class PyJClass(object):
                                               # entries in the `constant_pool` table
                                               # plus one
 
-        print 'constant_pool_count: {}'.format(constant_pool_count)
         while constant_pool_count > 0:
             constant_pool_count -= self._load_constants()
+
         self._sort_constants()
 
         # etc
@@ -219,7 +219,7 @@ class PyJClass(object):
         self.java_methods[self._method_name_type(m.mname, m.mdesc)] = m
 
     def _method_name_type(self, nm, ty):
-        return "{}:{}".format(nm, ty)
+        return "{} : {}".format(nm, ty)
 
     def _load_attributes(self):
         pass
@@ -241,16 +241,18 @@ class PyJClass(object):
         return "{} (super:{})".format(self.this_class, self.super_class)
 
     def verbose(self):
-        retval = ["{} : {}({})".format(self.klass, self.this_class, self.super_class)]
+        retval = ["{} : {}({})".format(self.__class__, self.this_class, self.super_class)]
 
-        for i, constant in enumerate(self.java_constants):
+        i = 1
+        for constant in self.java_constants:
             if not constant:
                 continue
-            retval.append("{:4d}\t{}".format(i + 1, constant))
+            retval.append("{:4d}\t{}".format(i, constant))
+            i += 1
 
         for key, value in self.java_methods.iteritems():
             retval.append("{}".format(key))
-            retval.append("{}".format(value.verbose()))
+            # retval.append("{}".format(value.verbose()))
         return '\n'.join(retval)
 
     def native_methods(self):
